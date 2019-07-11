@@ -52,16 +52,9 @@ contract SupplyChain {
     event LogReceived (uint indexed sku);
 
 /* Create a modifer that checks if the msg.sender is the owner of the contract */
-  modifier verifyCaller (address _address) { 
-    require (msg.sender == _address); 
-    _;
-  }
+  modifier verifyCaller (address _address) { require (msg.sender == _address); _;}
 
-  modifier paidEnough(uint _price) { 
-    require(msg.value >= _price); 
-    _;
-  }
-
+  modifier paidEnough(uint _price) { require(msg.value >= _price); _;}
   modifier checkValue(uint _sku) {
     //refund them after pay for item (why it is before, _ checks for logic before func)
     _;
